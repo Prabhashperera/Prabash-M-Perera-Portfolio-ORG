@@ -16,6 +16,7 @@ import {
   Star,
   Server
 } from 'lucide-react';
+import myPhoto from '../assets/my.jpg'
 
 // --- REUSABLE UI COMPONENTS (Restored from V1) ---
 
@@ -95,18 +96,17 @@ const OverviewView = () => {
                         <button className="px-8 py-3 bg-white text-black font-bold rounded-xl hover:bg-cyan-100 transition-colors flex items-center gap-2 relative overflow-hidden group">
                             <span className="relative z-10">Explore Projects</span>
                             <Terminal size={18} className="relative z-10 group-hover:translate-x-1 transition-transform"/>
-                            <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-cyan-300 to-blue-400 opacity-0 group-hover:opacity-20 transition-opacity blur-xl"></div>
+                            <div className="absolute inset-0 h-full w-full bg-linear-to-r from-cyan-300 to-blue-400 opacity-0 group-hover:opacity-20 transition-opacity blur-xl"></div>
                         </button>
                     </div>
                 </div>
                 
                 <div className="flex-1 relative">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[400px] md:h-[400px] bg-gradient-to-tr from-cyan-500/30 to-purple-500/30 rounded-full blur-[50px] animate-pulse-slow"></div>
-                    <GlassCard className="relative w-[260px] h-[260px] md:w-[360px] md:h-[360px] mx-auto rounded-[30px] overflow-hidden border-2 border-white/10 p-2 z-10 group">
-                        <div className="w-full h-full rounded-[24px] overflow-hidden relative bg-slate-800 flex items-center justify-center text-slate-500 flex-col gap-2">
-                            <ImageIcon size={48} className="opacity-50"/>
-                            <span className="text-sm font-mono">Add Your Photo Here</span>
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#050914] via-transparent to-transparent opacity-60"></div>
+                    <GlassCard className="relative w-65 h-[260px] md:w-[360px] md:h-[360px] mx-auto rounded-[30px] overflow-hidden border-2 border-white/10 p-2 z-10 group">
+                        <div className="w-full h-full rounded-3xl overflow-hidden relative bg-slate-800 flex items-center justify-center text-slate-500 flex-col gap-2">
+                            <img src={myPhoto} alt="my photo" />
+                            <div className="absolute inset-0 bg-linear-to-t from-[#050914] via-transparent to-transparent opacity-60"></div>
                         </div>
                     </GlassCard>
                 </div>
@@ -117,7 +117,7 @@ const OverviewView = () => {
                 <div className="flex items-center gap-4 mb-8">
                     <LayoutGrid className="text-cyan-400" size={28}/>
                     <h3 className="text-3xl font-bold text-white">Technical Arsenal</h3>
-                    <div className="h-px bg-gradient-to-r from-cyan-500/50 to-transparent flex-1 ml-4"></div>
+                    <div className="h-px bg-linear-to-r from-cyan-500/50 to-transparent flex-1 ml-4"></div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
