@@ -34,7 +34,7 @@ const skillCategories = [
     ]
   },
   {
-    title: "Backend & Java Suite",
+    title: "Backend & Databases",
     icon: Server,
     color: "text-blue-400",
     skills: [
