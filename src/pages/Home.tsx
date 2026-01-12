@@ -1,20 +1,12 @@
 import{ useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Cpu,
-  Code2,
-  Layers,
   Github,
   Linkedin,
-  Mail,
   Terminal,
   LayoutGrid,
   Image as ImageIcon,
-  BookOpen,
-  ExternalLink,
-  GitBranch,
-  Star,
-  Server
+  BookOpen
 } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
 import ProjectsView from '../components/ProjectsView';

@@ -1,17 +1,12 @@
 // --- CONTENT VIEWS ---
 
 import { motion } from "framer-motion";
-import { Terminal, LayoutGrid, Code2, Server, Cpu, Layers } from "lucide-react";
+import { Terminal} from "lucide-react";
 import GlassCard from "./GlassCard";
 import myPhoto from '../assets/my.jpg'
-import SkillBadge from "./SkillBadge";
 import SkillSection from "./SkillSection";
 
 const OverviewView = () => {
-    // Data from your prompt
-    const frontendSkills = ["React", "JavaScript", "TypeScript", "HTML5", "CSS3", "Tailwind CSS", "Next.js", "Redux", "React Native"];
-    const backendSkills = ["Java", "Spring Boot", "Node.js (Express)", "MongoDB", "MySQL"];
-    const toolsSkills = ["Git", "Github", "Postman", "Figma", "Photoshop", "Premiere Pro"];
 
     return (
         <motion.div 
@@ -60,7 +55,7 @@ const OverviewView = () => {
             </section>
 
             {/* SKILLS SECTION */}
-            <SkillSection frontend={frontendSkills} backend={backendSkills} toolsSkills={toolsSkills} />
+            <SkillSection />
         </motion.div>
     );
 };
