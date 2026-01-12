@@ -56,7 +56,7 @@ const Home = () => {
       {/* ================= BACKGROUND (Updated to Cyber Grid) ================= */}
       <div className="fixed inset-0 pointer-events-none">
           {/* Cyber Grid Pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"></div>
           {/* Top Left Glow */}
           <div className="absolute top-[-10%] left-[-10%] w-125 h-125 bg-purple-600/10 rounded-full blur-[120px]"></div>
           {/* Bottom Right Glow */}
