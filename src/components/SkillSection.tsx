@@ -9,7 +9,8 @@ import {
   SiSpring, SiSpringboot, SiMysql, SiPython, SiNumpy, SiPandas, 
   SiGit, SiGithub, SiPostman, SiFigma, SiAdobephotoshop, SiAdobepremierepro, 
   SiBootstrap,
-  SiMaterialdesign
+  SiMaterialdesign,
+  SiJavascript
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
@@ -23,6 +24,7 @@ const skillCategories = [
       { name: "React JS", icon: SiReact, color: "#61DAFB" },
       { name: "Redux", icon: SiRedux, color: "#764ABC" },
       { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "JavaScript", icon: SiJavascript, color: "#E34F26" },
       { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
       {name : "Bootstrap", icon: SiBootstrap, color : "#764ABC"},
       {name : "MaterialUI", icon: SiMaterialdesign, color : "#764ABC"},
