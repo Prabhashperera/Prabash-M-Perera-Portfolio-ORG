@@ -21,21 +21,21 @@ const OverviewView = () => {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                         </span>
-                        System Online. Available for work.
+                        Im Online. Available for work.
                     </div>
 
                     <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
                         Hi, I'm <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-blue-500 to-purple-600 animate-gradient-x">Prabash Perera</span>
                     </h1>
                     <h2 className="text-2xl md:text-3xl font-light text-slate-300">
-                        FullStack Developer & Digital Architect
+                        FullStack Developer & Backend Dev
                     </h2>
                     <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto md:mx-0 leading-relaxed">
                         Crafting high-performance digital experiences where engineering meets intuitive design. Specializing in the React ecosystem and robust Java backend systems.
                     </p>
                     
                     <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-4">
-                        <button className="px-8 py-3 bg-white text-black font-bold rounded-xl hover:bg-cyan-100 transition-colors flex items-center gap-2 relative overflow-hidden group">
+                        <button className="cursor-grab px-8 py-3 bg-white text-black font-bold rounded-xl hover:bg-cyan-100 transition-colors flex items-center gap-2 relative overflow-hidden group">
                             <span className="relative z-10">Explore Projects</span>
                             <Terminal size={18} className="relative z-10 group-hover:translate-x-1 transition-transform"/>
                             <div className="absolute inset-0 h-full w-full bg-linear-to-r from-cyan-300 to-blue-400 opacity-0 group-hover:opacity-20 transition-opacity blur-xl"></div>

@@ -77,7 +77,7 @@ const Home = () => {
                             <button 
                                 key={item.id} 
                                 onClick={() => setActiveTab(item.id)}
-                                className={`relative group p-3 rounded-full md:rounded-xl flex items-center justify-center transition-all duration-300 ${isActive ? 'bg-white/10 text-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.2)]' : 'hover:bg-white/5 text-slate-400 hover:text-slate-200'}`}
+                                className={`cursor-grab relative group p-3 rounded-full md:rounded-xl flex items-center justify-center transition-all duration-300 ${isActive ? 'bg-white/10 text-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.2)]' : 'hover:bg-white/5 text-slate-400 hover:text-slate-200'}`}
                             >
                                 <item.icon size={24} strokeWidth={1.5} />
                                 {/* Tooltip */}
