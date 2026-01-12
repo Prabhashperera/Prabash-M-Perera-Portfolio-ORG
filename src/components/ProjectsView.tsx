@@ -16,21 +16,21 @@ const ProjectsView = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <ProjectCard 
-                    title="E-Commerce Core"
-                    description="A full-stack microservices based e-commerce platform built with Spring Boot and React. Features include secure payments, inventory tracking, and admin dashboard."
-                    tags={["Java", "Spring Boot", "React", "MySQL"]}
+                    title="Project ZEIDOT"
+                    description="A JavaFx Management Project System to Manage And Donate Left Over Foods from Hotels to Eldery Homes, Child Homes, Homeless Peoples."
+                    tags={["Java", "JavaFX", "XML", "MySQL"]}
                     stars="24" forks="8"
                 />
                 <ProjectCard 
-                    title="TaskOS AI"
-                    description="Productivity application utilizing OpenAI API for intelligent task prioritization and summarizing. Built with Next.js 14 and Tailwind for optimal performance."
-                    tags={["Next.js", "TypeScript", "Tailwind", "OpenAI API"]}
+                    title="FindCare WEB"
+                    description="A Java EE Fullstack Network for POST found & Lost Pets, Users Can Post There Lost Pets to find, If Found Also They Can Post saying, I Found!!"
+                    tags={["React JS", "SpringBoot", "Tailwind", "MySql"]}
                     stars="45" forks="12"
                 />
                 <ProjectCard 
-                    title="Native Fitness Tracker"
-                    description="Cross-platform mobile application for tracking workouts and nutrition data in real-time. Syncs with health APIs and visualizes progress."
-                    tags={["React Native", "Redux", "Firebase"]}
+                    title="BUILDME - HABIT"
+                    description="Make a Good Habit in 30 Days Challenge with AI Coach and Make Fun and Gain Life Up"
+                    tags={["ReactJs", "Express Js", "MongoDB", "Gemini & Groq"]}
                     stars="18" forks="4"
                 />
             </div>
