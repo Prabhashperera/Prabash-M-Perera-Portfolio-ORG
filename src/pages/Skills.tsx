@@ -121,6 +121,22 @@ const Skills = () => {
           </p>
         </div>
 
+        {/* Using a placeholder abstract dark geometric shape that blends in */}
+         <img 
+            src="https://images.pexels.com/photos/6547182/pexels-photo-6547182.jpeg"
+            alt="Abstract Branding"
+            // absolute position, negative right margin to bleed off screen, low opacity, slight blur
+            className="absolute top-30 -right-44 md:-right-30 w-[800px] md:w-[800px]  opacity-20 mix-blend-screen" // blur-sm rotate-12
+         />
+
+                               {/* Using a placeholder abstract dark geometric shape that blends in */}
+         <img 
+            src="https://images.pexels.com/photos/1727658/pexels-photo-1727658.jpeg"
+            alt="Abstract Branding"
+            // absolute position, negative right margin to bleed off screen, low opacity, slight blur
+            className="absolute top-200 -right-4 md:-right-30 w-[500px] md:w-[800px] blur-sm  opacity-20 mix-blend-screen" // blur-sm rotate-12
+         />
+
         {/* Categories Grid */}
         <div className="flex flex-col gap-16">
           {skillCategories.map((category, idx) => (
