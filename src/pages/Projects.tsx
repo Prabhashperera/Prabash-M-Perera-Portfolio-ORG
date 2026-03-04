@@ -82,6 +82,14 @@ const Projects = () => {
           </p>
         </div>
 
+        {/* Using a placeholder abstract dark geometric shape that blends in */}
+         <img 
+            src="https://img.freepik.com/premium-photo/marble-sculpture-greek-god-black-background_941097-146218.jpg"
+            alt="Abstract Branding"
+            // absolute position, negative right margin to bleed off screen, low opacity, slight blur
+            className="absolute top-10 -right-24 md:-right-0 w-[200px] md:w-[600px] opacity-20 mix-blend-screen" // blur-sm rotate-12
+         />
+
         {/* Main Layout: 
           Mobile -> Stacked list with images inline.
           Desktop -> Left side text list, right side sticky image preview. 
