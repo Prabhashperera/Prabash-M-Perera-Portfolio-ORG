@@ -24,7 +24,7 @@ const PlaceholderView = ({ title, icon: Icon }: any) => (
         <div className="p-12 border border-dashed border-slate-700 rounded-3xl bg-white/5">
             <Icon size={48} className="mx-auto mb-4 text-slate-500"/>
             <h2 className="text-2xl font-bold text-slate-300">{title} Module</h2>
-            <p className="text-slate-500 mt-2">Content stream not connected.</p>
+            <p className="text-slate-500 mt-2">Content stream not connected</p>
         </div>
     </motion.div>
 );
