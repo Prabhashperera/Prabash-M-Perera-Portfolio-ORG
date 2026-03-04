@@ -36,12 +36,12 @@ const Home = () => {
          />
 
          {/* Bottom Left Image - Footer/Lower Section Branding */}
-         <img 
+         {/* <img 
             src=""
             alt="Abstract Tech Branding"
             // absolute position bottom left, low opacity
             className="absolute bottom-0 -left-24 md:-left-48 w-[500px] md:w-[700px] opacity-10 blur-md -rotate-12 mix-blend-screen"
-         />
+         /> */}
       </div>
 
 
