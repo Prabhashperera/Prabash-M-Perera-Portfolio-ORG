@@ -4,7 +4,6 @@ import { Code, Award, Image as ImageIcon, BookOpen, Wrench, Package } from 'luci
 const Home = () => {
   const navigate = useNavigate();
 
-  // Added short descriptions for a more professional box layout
   const boxes = [
     { id: 'projects', title: 'Projects', desc: 'My recent development work', icon: Code, path: '/projects' },
     { id: 'skills', title: 'Skills', desc: 'Technologies and tools', icon: Wrench, path: '/skills' },
@@ -15,17 +14,41 @@ const Home = () => {
   ];
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-slate-200 overflow-x-hidden selection:bg-white/30 font-sans">
+    // Ensure overflow-x-hidden is on main to prevent scrollbars from images bleeding off-screen
+    <main className="min-h-screen bg-[#0a0a0a] text-slate-200 overflow-x-hidden selection:bg-white/30 font-sans relative">
       
-      {/* Subtle, completely static background grid */}
+      {/* 1. Background Grid (Existing) - z-0 */}
       <div className="fixed inset-0 pointer-events-none z-0">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[40px_40px]"></div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      {/* 2. BRANDING IMAGES CONTAINER - New Layer (z-10) */}
+      {/* These sit above the grid but below the text. pointer-events-none is crucial so clicking works. */}
+      <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+         
+         {/* Top Right Image - Hero Section Branding */}
+         {/* Using a placeholder abstract dark geometric shape that blends in */}
+         <img 
+            src="https://images.playground.com/7fbb19aa-2b72-4cef-ae9a-c96d0eb395f9.jpeg"
+            alt="Abstract Branding"
+            // absolute position, negative right margin to bleed off screen, low opacity, slight blur
+            className="absolute top-0 -right-24 md:-right-18 w-[500px] md:w-[800px] opacity-20 mix-blend-screen" // blur-sm rotate-12
+         />
+
+         {/* Bottom Left Image - Footer/Lower Section Branding */}
+         <img 
+            src=""
+            alt="Abstract Tech Branding"
+            // absolute position bottom left, low opacity
+            className="absolute bottom-0 -left-24 md:-left-48 w-[500px] md:w-[700px] opacity-10 blur-md -rotate-12 mix-blend-screen"
+         />
+      </div>
+
+
+      {/* 3. MAIN CONTENT CONTAINER (Existing) - Higher z-index (z-20) */}
+      <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         
         {/* ================= HERO SECTION ================= */}
-        {/* Left-aligned, static, and bold */}
         <section className="pt-32 pb-24 border-b border-white/5">
           <div className="max-w-4xl">
             <p className="text-slate-500 font-mono uppercase tracking-widest text-sm mb-6">
@@ -51,12 +74,13 @@ const Home = () => {
              <h2 className="text-2xl font-medium text-white">Explore</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Added a subtle background to the grid area to ensure readability over branding images if needed */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 backdrop-blur-sm">
             {boxes.map((box) => (
               <div
                 key={box.id}
                 onClick={() => navigate(box.path)}
-                className="group cursor-pointer bg-[#111111] border border-white/10 hover:border-white/30 hover:bg-[#1a1a1a] transition-colors duration-300 p-8 h-64 flex flex-col justify-between"
+                className="group cursor-pointer bg-[#111111]/90 border border-white/10 hover:border-white/30 hover:bg-[#1a1a1a] transition-colors duration-300 p-8 h-64 flex flex-col justify-between"
               >
                 {/* Top Icon */}
                 <div>

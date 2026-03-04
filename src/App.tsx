@@ -20,6 +20,7 @@ import './App.css';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Certifications from './pages/Certifications';
+import Skills from './pages/Skills';
 
 // A simple template for you to build upon later
 const PlaceholderPage = ({ title }: { title: string }) => (
@@ -48,7 +49,7 @@ function App() {
       <Route path="/certifications" element={<Certifications />} />
       <Route path="/gallery" element={<PlaceholderPage title="Gallery" />} />
       <Route path="/blogs" element={<PlaceholderPage title="Blogs" />} />
-      <Route path="/skills" element={<PlaceholderPage title="Skills" />} />
+      <Route path="/skills" element={<Skills />} />
       <Route path="/other" element={<PlaceholderPage title="Other" />} />
     </Routes>
   );

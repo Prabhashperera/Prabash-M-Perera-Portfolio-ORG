@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight, BadgeCheck } from 'lucide-react';
+import { ArrowLeft, BadgeCheck, ChevronDown, ExternalLink } from 'lucide-react';
 
-// Using your actual tech stack to create realistic placeholder courses
+// Added 'image' to each course object
 const coursesData = [
   {
     id: 'mobile-dev',
@@ -10,7 +11,8 @@ const coursesData = [
     date: 'Feb 2026',
     status: 'Completed',
     skills: ['React Native', 'Mobile UI/UX', 'Expo'],
-    link: '#',
+    link: '#', // Replace with the real verification link
+    image: 'https://images.unsplash.com/photo-1589330694653-ded6df03f754?auto=format&fit=crop&q=80&w=1000', // Replace with your certificate image
   },
   {
     id: 'mern-stack',
@@ -20,6 +22,7 @@ const coursesData = [
     status: 'Certified',
     skills: ['MongoDB', 'Express', 'React', 'Node.js'],
     link: '#',
+    image: 'https://images.unsplash.com/photo-1589330694653-ded6df03f754?auto=format&fit=crop&q=80&w=1000',
   },
   {
     id: 'java-spring',
@@ -29,6 +32,7 @@ const coursesData = [
     status: 'Certified',
     skills: ['Java', 'Spring Boot', 'REST APIs'],
     link: '#',
+    image: 'https://images.unsplash.com/photo-1589330694653-ded6df03f754?auto=format&fit=crop&q=80&w=1000',
   },
   {
     id: 'data-science',
@@ -38,11 +42,19 @@ const coursesData = [
     status: 'Completed',
     skills: ['Python', 'Pandas', 'Data Science'],
     link: '#',
+    image: 'https://images.unsplash.com/photo-1589330694653-ded6df03f754?auto=format&fit=crop&q=80&w=1000',
   }
 ];
 
 const Certifications = () => {
   const navigate = useNavigate();
+  // State to track which row is currently open
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  const toggleRow = (id: string) => {
+    // If clicking the currently open row, close it. Otherwise, open the new one.
+    setExpandedId(expandedId === id ? null : id);
+  };
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-slate-200 font-sans selection:bg-white/30">
@@ -83,57 +95,103 @@ const Certifications = () => {
             <div className="col-span-2">Date</div>
             <div className="col-span-5">Course / Certification</div>
             <div className="col-span-4">Acquired Skills</div>
-            <div className="col-span-1 text-right">Verify</div>
+            <div className="col-span-1 text-right">View</div>
           </div>
 
           {/* Table Rows */}
-          {coursesData.map((course) => (
-            <a 
-              key={course.id}
-              href={course.link}
-              target="_blank"
-              rel="noreferrer"
-              className="group grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 py-8 border-b border-white/10 hover:bg-white/[0.02] transition-colors duration-300 items-start lg:items-center -mx-4 px-4 lg:mx-0 lg:px-0"
-            >
-              
-              {/* Date & Status (Mobile: Top / Desktop: Col 1) */}
-              <div className="lg:col-span-2 flex flex-row lg:flex-col items-center lg:items-start gap-3 lg:gap-1 mb-2 lg:mb-0">
-                <span className="font-mono text-slate-400 text-sm">{course.date}</span>
-                <span className="flex items-center gap-1 text-xs font-mono text-emerald-400/80 bg-emerald-400/10 px-2 py-0.5 rounded-sm border border-emerald-400/20">
-                  <BadgeCheck size={12} /> {course.status}
-                </span>
-              </div>
+          {coursesData.map((course) => {
+            const isExpanded = expandedId === course.id;
 
-              {/* Course Title & Issuer (Mobile: Middle / Desktop: Col 2) */}
-              <div className="lg:col-span-5 mb-4 lg:mb-0">
-                <h2 className="text-2xl md:text-3xl font-medium text-slate-200 group-hover:text-white transition-colors duration-300 mb-1">
-                  {course.title}
-                </h2>
-                <p className="text-slate-500 font-light">
-                  {course.issuer}
-                </p>
-              </div>
+            return (
+              <div 
+                key={course.id}
+                className="group border-b border-white/10 transition-colors duration-300 -mx-4 px-4 lg:mx-0 lg:px-0"
+              >
+                {/* Clickable Header Row */}
+                <div 
+                  onClick={() => toggleRow(course.id)}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 py-8 cursor-pointer hover:bg-white/[0.02] items-start lg:items-center"
+                >
+                  {/* Date & Status */}
+                  <div className="lg:col-span-2 flex flex-row lg:flex-col items-center lg:items-start gap-3 lg:gap-1 mb-2 lg:mb-0">
+                    <span className="font-mono text-slate-400 text-sm">{course.date}</span>
+                    <span className="flex items-center gap-1 text-xs font-mono text-emerald-400/80 bg-emerald-400/10 px-2 py-0.5 rounded-sm border border-emerald-400/20">
+                      <BadgeCheck size={12} /> {course.status}
+                    </span>
+                  </div>
 
-              {/* Skills Tags (Mobile: Bottom / Desktop: Col 3) */}
-              <div className="lg:col-span-4 flex flex-wrap gap-2">
-                {course.skills.map((skill) => (
-                  <span 
-                    key={skill} 
-                    className="text-xs text-slate-400 bg-[#111111] px-3 py-1.5 border border-white/5 rounded-full group-hover:border-white/10 transition-colors duration-300"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+                  {/* Course Title & Issuer */}
+                  <div className="lg:col-span-5 mb-4 lg:mb-0">
+                    <h2 className="text-2xl md:text-3xl font-medium text-slate-200 group-hover:text-white transition-colors duration-300 mb-1">
+                      {course.title}
+                    </h2>
+                    <p className="text-slate-500 font-light">
+                      {course.issuer}
+                    </p>
+                  </div>
 
-              {/* Action Link (Mobile: Hidden or inline / Desktop: Col 4) */}
-              <div className="hidden lg:flex lg:col-span-1 justify-end">
-                <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-500 group-hover:bg-white group-hover:text-black group-hover:border-white transition-all duration-300">
-                  <ArrowUpRight size={18} strokeWidth={1.5} />
+                  {/* Skills Tags */}
+                  <div className="lg:col-span-4 flex flex-wrap gap-2 pointer-events-none">
+                    {course.skills.map((skill) => (
+                      <span 
+                        key={skill} 
+                        className="text-xs text-slate-400 bg-[#111111] px-3 py-1.5 border border-white/5 rounded-full"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Chevron Toggle */}
+                  <div className="hidden lg:flex lg:col-span-1 justify-end items-center text-slate-500 group-hover:text-white transition-colors">
+                    <ChevronDown 
+                      size={24} 
+                      strokeWidth={1.5} 
+                      className={`transition-transform duration-500 ${isExpanded ? '-rotate-180' : 'rotate-0'}`} 
+                    />
+                  </div>
                 </div>
+
+                {/* Expanded Content Section (Image & Button) */}
+                <div 
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                    isExpanded ? 'max-h-[800px] opacity-100 pb-8' : 'max-h-0 opacity-0 pb-0'
+                  }`}
+                >
+                  <div className="flex flex-col md:flex-row gap-8 items-start bg-[#111111] border border-white/5 rounded-xl p-6 lg:p-8 ml-0 lg:ml-[16.666%]">
+                    
+                    {/* Certificate Image */}
+                    <div className="w-full md:w-2/3 border border-white/10 rounded-lg overflow-hidden bg-white/5 shadow-xl">
+                      <img 
+                        src={course.image} 
+                        alt={`${course.title} Certificate`} 
+                        className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity"
+                      />
+                    </div>
+                    
+                    {/* Call to Action Details */}
+                    <div className="w-full md:w-1/3 flex flex-col items-start pt-2">
+                      <h3 className="text-lg font-medium text-white mb-2">Verification</h3>
+                      <p className="text-sm text-slate-400 mb-6 leading-relaxed">
+                        This credential verifies the successful completion of the {course.title} program issued by {course.issuer}.
+                      </p>
+                      
+                      <a 
+                        href={course.link} 
+                        target="_blank" 
+                        rel="noreferrer"
+                        className="flex items-center justify-center gap-2 bg-white text-black px-6 py-3 font-medium text-sm rounded-lg hover:bg-slate-200 transition-colors w-full"
+                      >
+                        Verify Original <ExternalLink size={16} />
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+
               </div>
-            </a>
-          ))}
+            );
+          })}
         </div>
 
       </div>
