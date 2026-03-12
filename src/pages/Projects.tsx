@@ -10,9 +10,9 @@ const projectsData = [
     type: 'Gamified Web App',
     description: 'A habit-building platform integrating GenAI APIs for personalized advice.',
     tech: ['Node.js', 'Express', 'React', 'GenAI'],
-    image: '/src/assets/BuildMe.png', 
-    github: '#',
-    live: '#',
+    image: '/src/assets/Habit.jpg', 
+    github: 'https://github.com/Prabhashperera/BUILD-ME-Habit-Builder-BE',
+    live: 'https://build-me-habit-builder-fe.vercel.app/',
   },
   {
     id: 'petfinder',
@@ -21,9 +21,9 @@ const projectsData = [
     description: 'A comprehensive application designed for reporting and locating lost pets.',
     tech: ['Spring Boot', 'React', 'Node.js'],
     // Fallback image using a sleek unsplash photo for pets since it wasn't in the assets folder
-    image: 'https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&q=80&w=1000', 
-    github: '#',
-    live: '#',
+    image: '/src/assets/Pet.jpg', 
+    github: 'https://github.com/Prabhashperera/Find-Care-Full-Stack-App-Spring-Boot',
+    live: 'https://github.com/Prabhashperera/Find-Care-Full-Stack-App-Spring-Boot',
   },
   {
     id: 'zeidot',
@@ -31,9 +31,9 @@ const projectsData = [
     type: 'Desktop Application',
     description: 'A system built to reduce food waste by redistributing surplus food from hotels to charities.',
     tech: ['JavaFX', 'Java'],
-    image: '/src/assets/ZEIDOT.png',
-    github: '#',
-    live: '#',
+    image: '/src/assets/ZEIDOT.jpg',
+    github: 'https://github.com/Prabhashperera/Project-ZEIDOT-Layered-Architecture',
+    live: 'https://github.com/Prabhashperera/Project-ZEIDOT-Layered-Architecture',
   },
   {
     id: 'emp',
@@ -41,9 +41,9 @@ const projectsData = [
     type: 'Management Tool',
     description: 'Employee management portal for streamlined internal operations.',
     tech: ['MERN Stack', 'Tailwind'],
-    image: '/src/assets/EMP.png',
-    github: '#',
-    live: '#',
+    image: '/src/assets/EMP.jpg',
+    github: 'https://github.com/Prabhashperera/Employee-Complaint-System',
+    live: 'https://github.com/Prabhashperera/Employee-Complaint-System',
   },
 ];
 
