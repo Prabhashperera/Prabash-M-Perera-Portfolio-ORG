@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Code, Award, Image as ImageIcon, BookOpen, Wrench, Package } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -31,12 +32,24 @@ const Home = () => {
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const move = (e:any) => {
+      setMouse({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", move);
+    return () => window.removeEventListener("mousemove", move);
+  }, []);
+
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-slate-200 overflow-x-hidden selection:bg-white/30 font-sans relative">
+      
       
       {/* 1. Background Grid - Static */}
       <div className="fixed inset-0 pointer-events-none z-0">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[40px_40px]"></div>
+          
       </div>
 
       {/* 2. BRANDING IMAGES CONTAINER - Animated */}
@@ -72,7 +85,7 @@ const Home = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-slate-500 font-mono uppercase tracking-widest text-sm mb-6"
             >
-              Portfolio
+              Mr. Bhashz
             </motion.p>
 
             {/* Main Name - Smooth fade and scale up */}
