@@ -32,16 +32,6 @@ const Home = () => {
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const move = (e:any) => {
-      setMouse({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, []);
-
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-slate-200 overflow-x-hidden selection:bg-white/30 font-sans relative">
       
