@@ -32,7 +32,7 @@ const PlaceholderPage = ({ title }: { title: string }) => (
         {title}
      </h1>
      <p className="text-xl text-slate-400 mb-12 text-center max-w-lg">
-        This is the dedicated space for {title.toLowerCase()}. You can build your content here!
+        {title.toUpperCase()}. This page is under construction. Please check back later for updates!
      </p>
      
      <Link to="/" className="px-8 py-3 bg-white/5 border border-white/10 hover:bg-white/10 rounded-xl transition-all duration-300 flex items-center gap-2">
