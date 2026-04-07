@@ -11,7 +11,7 @@ const projects = [
     year: "2026",
     role: "Full-Stack Developer",
     accent: "primary",
-    image: "/public/assets/Habit.jpg",
+    image: "/assets/Habit.jpg",
     size: "large",
   },
   {
