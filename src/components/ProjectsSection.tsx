@@ -4,14 +4,14 @@ import { useRef, useState } from "react";
 
 const projects = [
   {
-    title: "Habit Tracker Pro",
+    title: "BUILDME - HAbbit Builder",
     desc: "A comprehensive habit-building web app with streak tracking, analytics dashboard, and gamification elements that keep users engaged.",
-    tags: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    tags: ["React", "Node.js", "MongoDB", "Express.js"],
     icon: Layers,
-    year: "2024",
+    year: "2026",
     role: "Full-Stack Developer",
     accent: "primary",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
+    image: "/public/assets/Habit.jpg",
     size: "large",
   },
   {
