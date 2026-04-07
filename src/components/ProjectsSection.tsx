@@ -28,12 +28,12 @@ const projects = [
   {
     title: "Band Valut - Recording Storage",
     desc: "Specially Developed for Music Bands that they can redord there practice session, Arrangement and Versioning them, and easily can find them",
-    tags: ["Spring Boot", "PostgreSQL", "Docker", "React"],
+    tags: ["Express Js", "Mongoose", "Vercel", "React"],
     icon: Code2,
-    year: "2023",
-    role: "Backend Architect",
+    year: "2026",
+    role: "Full-Stack Developer",
     accent: "primary",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=500&fit=crop",
+    image: "/assets/live-bands-india.jpg",
     size: "small",
   },
   {
