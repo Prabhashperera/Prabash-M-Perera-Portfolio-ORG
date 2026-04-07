@@ -223,7 +223,7 @@ const ProjectsSection = () => {
           className="flex justify-center"
         >
           <a
-            href="https://github.com/Prabashperera"
+            href="https://github.com/Prabhashperera"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl border border-border bg-card overflow-hidden font-display font-medium text-foreground transition-all duration-300 hover:border-primary/40"
