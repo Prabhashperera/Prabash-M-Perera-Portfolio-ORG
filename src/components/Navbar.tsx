@@ -30,7 +30,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="font-display text-lg font-bold text-foreground tracking-tight">
-          PM<span className="text-primary">P</span>
+          BHA<span className="text-primary">SHZ</span>
         </a>
 
         {/* Desktop */}
