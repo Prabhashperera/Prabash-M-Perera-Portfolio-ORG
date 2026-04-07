@@ -21,7 +21,6 @@ const categories: SkillCategory[] = [
       { name: "React", level: 5 }, { name: "Next.js", level: 4 }, { name: "TypeScript", level: 5 },
       { name: "JavaScript", level: 5 }, { name: "HTML5 / CSS3", level: 5 }, { name: "Tailwind CSS", level: 5 },
       { name: "Framer Motion", level: 4 }, { name: "Redux / Zustand", level: 4 },
-      { name: "Vue.js", level: 3 }, { name: "SASS / SCSS", level: 4 },
     ],
   },
   {
@@ -29,14 +28,13 @@ const categories: SkillCategory[] = [
     skills: [
       { name: "Node.js", level: 5 }, { name: "Express.js", level: 5 }, { name: "Spring Boot", level: 4 },
       { name: "Java", level: 4 }, { name: "Python", level: 4 }, { name: "REST APIs", level: 5 },
-      { name: "GraphQL", level: 3 }, { name: "PHP / Laravel", level: 3 },
-      { name: "Socket.io", level: 4 }, { name: "Microservices", level: 4 },
+      { name: "JavaScript", level: 4 }, { name: "Microservices", level: 4 },
     ],
   },
   {
     id: "mobile", label: "Mobile", icon: Smartphone,
     skills: [
-      { name: "React Native", level: 5 }, { name: "Expo", level: 4 }, { name: "Flutter", level: 3 },
+      { name: "React Native", level: 5 }, { name: "Expo", level: 4 },
       { name: "Android (Kotlin)", level: 3 }, { name: "iOS Basics", level: 2 },
       { name: "Push Notifications", level: 4 }, { name: "App Store Deploy", level: 4 },
     ],
@@ -52,9 +50,9 @@ const categories: SkillCategory[] = [
   {
     id: "devops", label: "DevOps & Cloud", icon: Cloud,
     skills: [
-      { name: "Docker", level: 4 }, { name: "AWS", level: 3 }, { name: "Vercel / Netlify", level: 5 },
+      { name: "Docker", level: 4 }, { name: "Vercel / Netlify", level: 5 },
       { name: "CI/CD Pipelines", level: 4 }, { name: "GitHub Actions", level: 4 },
-      { name: "Nginx", level: 3 }, { name: "Linux / Shell", level: 4 }, { name: "Kubernetes", level: 2 },
+      { name: "Kubernetes", level: 2 },
     ],
   },
   {
@@ -237,7 +235,7 @@ export default function SkillsSection() {
               {([
                 [totalSkills + "+", "Technologies"],
                 [categories.length, "Domains"],
-                ["5+", "Years XP"],
+                ["2+", "Years XP"],
               ] as [string, string][]).map(([n, l]) => (
                 <div key={l} className="relative px-4 py-3 rounded-xl border border-border bg-card text-center min-w-[76px]">
                   {/* HUD corners */}
