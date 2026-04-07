@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, MapPin } from "lucide-react";
 
-const roles = ["Full-Stack Developer", "Mobile Engineer", "Digital Creator"];
+const roles = ["Full-Stack Developer", "Software Engineer", "Backend Developer"];
 
 const HeroSection = () => {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -225,8 +225,8 @@ const HeroSection = () => {
             className="lg:col-span-4 flex lg:flex-col gap-6 lg:gap-0 lg:border-l lg:border-border lg:pl-8"
           >
             {[
-              { value: "3+", label: "Years of\nExperience" },
-              { value: "20+", label: "Projects\nDelivered" },
+              { value: "2+", label: "Years of\nExperience" },
+              { value: "10+", label: "Projects\nDelivered" },
               { value: "10+", label: "Technologies\nMastered" },
             ].map((stat, i) => (
               <motion.div
@@ -255,7 +255,7 @@ const HeroSection = () => {
         transition={{ delay: 1.5 }}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] text-muted-foreground tracking-widest uppercase">Scroll</span>
+        <span className="text-[10px] text-muted-foreground tracking-widest uppercase">Explore</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
