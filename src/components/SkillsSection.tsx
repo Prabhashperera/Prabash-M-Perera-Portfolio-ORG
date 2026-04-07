@@ -9,14 +9,14 @@ import { useState, useEffect } from "react";
 /* ─── Types ─────────────────────────────────────────────────────────── */
 interface Skill { name: string; level: number }
 interface SkillCategory {
-  id: string; label: string; abbr: string;
-  icon: React.ElementType; color: string; skills: Skill[];
+  id: string; label: string;
+  icon: React.ElementType; skills: Skill[];
 }
 
 /* ─── Data ──────────────────────────────────────────────────────────── */
 const categories: SkillCategory[] = [
   {
-    id: "frontend", label: "Frontend", abbr: "FE", icon: Monitor, color: "#a78bfa",
+    id: "frontend", label: "Frontend", icon: Monitor,
     skills: [
       { name: "React", level: 5 }, { name: "Next.js", level: 4 }, { name: "TypeScript", level: 5 },
       { name: "JavaScript", level: 5 }, { name: "HTML5 / CSS3", level: 5 }, { name: "Tailwind CSS", level: 5 },
@@ -25,7 +25,7 @@ const categories: SkillCategory[] = [
     ],
   },
   {
-    id: "backend", label: "Backend", abbr: "BE", icon: Server, color: "#60a5fa",
+    id: "backend", label: "Backend", icon: Server,
     skills: [
       { name: "Node.js", level: 5 }, { name: "Express.js", level: 5 }, { name: "Spring Boot", level: 4 },
       { name: "Java", level: 4 }, { name: "Python", level: 4 }, { name: "REST APIs", level: 5 },
@@ -34,7 +34,7 @@ const categories: SkillCategory[] = [
     ],
   },
   {
-    id: "mobile", label: "Mobile", abbr: "MB", icon: Smartphone, color: "#818cf8",
+    id: "mobile", label: "Mobile", icon: Smartphone,
     skills: [
       { name: "React Native", level: 5 }, { name: "Expo", level: 4 }, { name: "Flutter", level: 3 },
       { name: "Android (Kotlin)", level: 3 }, { name: "iOS Basics", level: 2 },
@@ -42,7 +42,7 @@ const categories: SkillCategory[] = [
     ],
   },
   {
-    id: "database", label: "Databases", abbr: "DB", icon: Database, color: "#38bdf8",
+    id: "database", label: "Databases", icon: Database,
     skills: [
       { name: "MongoDB", level: 5 }, { name: "PostgreSQL", level: 4 }, { name: "MySQL", level: 4 },
       { name: "Firebase", level: 4 }, { name: "Redis", level: 3 }, { name: "Supabase", level: 4 },
@@ -50,7 +50,7 @@ const categories: SkillCategory[] = [
     ],
   },
   {
-    id: "devops", label: "DevOps", abbr: "DO", icon: Cloud, color: "#7dd3fc",
+    id: "devops", label: "DevOps & Cloud", icon: Cloud,
     skills: [
       { name: "Docker", level: 4 }, { name: "AWS", level: 3 }, { name: "Vercel / Netlify", level: 5 },
       { name: "CI/CD Pipelines", level: 4 }, { name: "GitHub Actions", level: 4 },
@@ -58,7 +58,7 @@ const categories: SkillCategory[] = [
     ],
   },
   {
-    id: "tools", label: "Tools", abbr: "TL", icon: GitBranch, color: "#c084fc",
+    id: "tools", label: "Tools & Workflow", icon: GitBranch,
     skills: [
       { name: "Git / GitHub", level: 5 }, { name: "VS Code", level: 5 }, { name: "Postman", level: 5 },
       { name: "Jira / Trello", level: 4 }, { name: "Webpack / Vite", level: 4 },
@@ -66,7 +66,7 @@ const categories: SkillCategory[] = [
     ],
   },
   {
-    id: "design", label: "Design", abbr: "DS", icon: Palette, color: "#e879f9",
+    id: "design", label: "UI/UX & Design", icon: Palette,
     skills: [
       { name: "Figma", level: 4 }, { name: "Photoshop", level: 4 }, { name: "Illustrator", level: 3 },
       { name: "Adobe XD", level: 3 }, { name: "Canva Pro", level: 5 }, { name: "Design Systems", level: 4 },
@@ -74,7 +74,7 @@ const categories: SkillCategory[] = [
     ],
   },
   {
-    id: "creative", label: "AI & Creative", abbr: "AI", icon: Sparkles, color: "#f0abfc",
+    id: "creative", label: "AI & Creative", icon: Sparkles,
     skills: [
       { name: "Premiere Pro", level: 4 }, { name: "After Effects", level: 3 },
       { name: "DaVinci Resolve", level: 3 }, { name: "Photography", level: 4 },
@@ -86,67 +86,86 @@ const categories: SkillCategory[] = [
 
 const LEVEL_LABEL = ["", "Novice", "Familiar", "Proficient", "Advanced", "Expert"];
 
-/* ─── Meter bar ─────────────────────────────────────────────────────── */
-function MeterBar({ level, color, delay }: { level: number; color: string; delay: number }) {
-  const pct = level * 20;
-  return (
-    <div className="meter-track">
-      <motion.div
-        className="meter-fill"
-        initial={{ width: 0 }}
-        animate={{ width: `${pct}%` }}
-        transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
-        style={{ background: `linear-gradient(90deg, ${color}66, ${color})` }}
-      />
-      <motion.div
-        className="meter-tip"
-        initial={{ left: "0%" }}
-        animate={{ left: `${pct}%` }}
-        transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
-        style={{ background: color, boxShadow: `0 0 8px 2px ${color}80` }}
-      />
-    </div>
-  );
-}
-
-/* ─── Skill row ─────────────────────────────────────────────────────── */
-function SkillRow({ skill, index, color }: { skill: Skill; index: number; color: string }) {
+/* ─── Skill Row ─────────────────────────────────────────────────────── */
+function SkillRow({ skill, index, isOdd }: { skill: Skill; index: number; isOdd: boolean }) {
   const [hovered, setHovered] = useState(false);
+  const pct = skill.level * 20;
+
   return (
     <motion.div
-      className="skill-row"
-      initial={{ opacity: 0, x: -16 }}
+      className={`skill-row${isOdd ? " skill-row--odd" : ""}`}
+      initial={{ opacity: 0, x: -14 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.36, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.38, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* hover glow bg */}
+      {/* hover bg — same gradient pattern as ProjectCard shine */}
       <motion.div
-        className="row-hover-bg"
+        className="absolute inset-0 pointer-events-none"
         animate={{ opacity: hovered ? 1 : 0 }}
-        transition={{ duration: 0.18 }}
-        style={{ background: `linear-gradient(90deg, ${color}0d 0%, transparent 100%)` }}
+        transition={{ duration: 0.3 }}
+        style={{
+          background: "linear-gradient(105deg, hsl(var(--primary)/0.05) 0%, hsl(var(--accent)/0.04) 100%)",
+          boxShadow: "inset 0 0 40px hsl(var(--primary)/0.06)",
+        }}
       />
 
-      {/* active left bar */}
+      {/* left accent bar */}
       <motion.div
-        className="row-side-bar"
+        className="absolute left-0 top-2.5 bottom-2.5 w-0.5 rounded-full"
+        style={{
+          background: "hsl(var(--primary))",
+          boxShadow: "0 0 8px hsl(var(--primary)/0.7)",
+          transformOrigin: "center",
+        }}
         animate={{ scaleY: hovered ? 1 : 0, opacity: hovered ? 1 : 0 }}
-        transition={{ duration: 0.18 }}
-        style={{ background: color, boxShadow: `0 0 10px ${color}` }}
+        transition={{ duration: 0.2 }}
       />
 
-      <div className="row-left">
-        <span className="row-idx" style={{ color: hovered ? color : undefined }}>
+      <div className="row-inner">
+        {/* index number */}
+        <span className={`font-display text-[10px] tracking-widest font-bold transition-colors duration-200 w-6 text-right shrink-0 ${
+          hovered ? "text-primary" : "text-muted-foreground/30"
+        }`}>
           {String(index + 1).padStart(2, "0")}
         </span>
-        <span className="row-name">{skill.name}</span>
-      </div>
 
-      <div className="row-right">
-        <MeterBar level={skill.level} color={color} delay={index * 0.04 + 0.12} />
-        <span className="row-level" style={{ color: hovered ? color : undefined }}>
+        {/* name */}
+        <span className={`text-sm font-medium flex-1 min-w-0 transition-colors duration-200 ${
+          hovered ? "text-primary" : "text-foreground"
+        }`}>
+          {skill.name}
+        </span>
+
+        {/* meter */}
+        <div className="shrink-0 w-24 md:w-28">
+          <div className="relative h-px bg-border rounded-full overflow-visible">
+            <motion.div
+              className="absolute top-0 left-0 h-full rounded-full"
+              style={{ background: "linear-gradient(90deg, hsl(var(--primary)/0.5), hsl(var(--primary)))" }}
+              initial={{ width: "0%" }}
+              animate={{ width: `${pct}%` }}
+              transition={{ duration: 0.65, delay: index * 0.04 + 0.15, ease: [0.22, 1, 0.36, 1] }}
+            />
+            {/* glowing tip */}
+            <motion.div
+              className="absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full -translate-x-1/2"
+              style={{
+                background: "hsl(var(--primary))",
+                boxShadow: "0 0 7px 2px hsl(var(--primary)/0.6)",
+              }}
+              initial={{ left: "0%" }}
+              animate={{ left: `${pct}%` }}
+              transition={{ duration: 0.65, delay: index * 0.04 + 0.15, ease: [0.22, 1, 0.36, 1] }}
+            />
+          </div>
+        </div>
+
+        {/* level label */}
+        <span className={`text-[10px] tracking-[0.2em] uppercase font-semibold w-16 text-right shrink-0 transition-colors duration-200 hidden sm:block ${
+          hovered ? "text-primary" : "text-muted-foreground/40"
+        }`}>
           {LEVEL_LABEL[skill.level]}
         </span>
       </div>
@@ -154,23 +173,11 @@ function SkillRow({ skill, index, color }: { skill: Skill; index: number; color:
   );
 }
 
-/* ─── HUD corner ────────────────────────────────────────────────────── */
-function HUDCorner({ pos, color }: { pos: "tl" | "tr" | "bl" | "br"; color: string }) {
-  const s: React.CSSProperties = {
-    position: "absolute", width: 10, height: 10,
-    borderColor: color, opacity: 0.8,
-    ...(pos === "tl" ? { top: -1, left: -1, borderTopWidth: 1.5, borderLeftWidth: 1.5, borderStyle: "solid" } : {}),
-    ...(pos === "tr" ? { top: -1, right: -1, borderTopWidth: 1.5, borderRightWidth: 1.5, borderStyle: "solid" } : {}),
-    ...(pos === "bl" ? { bottom: -1, left: -1, borderBottomWidth: 1.5, borderLeftWidth: 1.5, borderStyle: "solid" } : {}),
-    ...(pos === "br" ? { bottom: -1, right: -1, borderBottomWidth: 1.5, borderRightWidth: 1.5, borderStyle: "solid" } : {}),
-  };
-  return <div style={s} />;
-}
-
-/* ─── Main ──────────────────────────────────────────────────────────── */
+/* ─── Main Section ──────────────────────────────────────────────────── */
 export default function SkillsSection() {
   const [activeId, setActiveId] = useState("frontend");
   const [blink, setBlink] = useState(true);
+
   const active = categories.find((c) => c.id === activeId)!;
   const totalSkills = categories.reduce((s, c) => s + c.skills.length, 0);
 
@@ -180,62 +187,79 @@ export default function SkillsSection() {
   }, []);
 
   return (
-    <section id="skills" className="ss-root">
-      {/* ambient orbs */}
-      <div className="orb orb-1" />
-      <div className="orb orb-2" />
-      <div className="orb orb-3" />
+    <section id="skills" className="relative py-28 md:py-36 overflow-hidden">
+
+      {/* ambient orbs — identical to ProjectsSection */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/[0.02] rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/[0.02] rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/[0.015] rounded-full blur-[120px]" />
+      </div>
+
       {/* dot grid */}
-      <div className="dot-grid" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(hsl(var(--primary)/0.12) 1px, transparent 1px)",
+          backgroundSize: "30px 30px",
+          maskImage: "radial-gradient(ellipse 75% 80% at 50% 40%, black 20%, transparent 100%)",
+        }}
+      />
 
-      <div className="ss-wrap">
+      <div className="max-w-6xl mx-auto px-6 relative">
 
-        {/* ── HEADER ── */}
+        {/* ── HEADER — exact same structure as ProjectsSection ── */}
         <motion.div
-          className="ss-header"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6"
         >
-          <div className="hdr-left">
-            <div className="eyebrow">
-              <span className="eyebrow-dot" />
-              <span>SYSTEM.STACK</span>
-              <span className="eyebrow-dot" />
+          <div>
+            {/* eyebrow — same as "The Vault" */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <p className="text-primary text-xs font-semibold tracking-[0.3em] uppercase">The Ecosystem</p>
             </div>
-            <h2 className="hdr-title">
-              Skills<span className="amp">&nbsp;&amp;&nbsp;</span>Arsenal
-              <span className="cursor-blink" style={{ opacity: blink ? 1 : 0 }}>_</span>
+            <h2 className="text-4xl md:text-6xl font-display font-bold text-foreground leading-[1.1]">
+              Skills &amp;<br />
+              <span className="text-gradient">Arsenal</span>
             </h2>
-            <p className="hdr-sub">Scanning {totalSkills} technologies across {categories.length} domains</p>
           </div>
 
-          <div className="hdr-stats">
-            {([
-              [totalSkills + "+", "Technologies"],
-              [categories.length, "Domains"],
-              ["5+", "Years XP"],
-            ] as [string | number, string][]).map(([n, l]) => (
-              <div key={l} className="stat-chip" style={{ position: "relative" }}>
-                <HUDCorner pos="tl" color="#a78bfa" />
-                <HUDCorner pos="tr" color="#a78bfa" />
-                <HUDCorner pos="bl" color="#a78bfa" />
-                <HUDCorner pos="br" color="#a78bfa" />
-                <span className="stat-n">{n}</span>
-                <span className="stat-l">{l}</span>
-              </div>
-            ))}
+          <div className="flex flex-col items-start md:items-end gap-4">
+            <p className="text-muted-foreground text-sm max-w-xs leading-relaxed md:text-right">
+              A curated stack spanning frontend, backend, mobile, AI, and everything in between.
+            </p>
+            {/* stat chips */}
+            <div className="flex items-center gap-3">
+              {([
+                [totalSkills + "+", "Technologies"],
+                [categories.length, "Domains"],
+                ["5+", "Years XP"],
+              ] as [string, string][]).map(([n, l]) => (
+                <div key={l} className="relative px-4 py-3 rounded-xl border border-border bg-card text-center min-w-[76px]">
+                  {/* HUD corners */}
+                  <span className="hud-corner hud-tl" />
+                  <span className="hud-corner hud-tr" />
+                  <span className="hud-corner hud-bl" />
+                  <span className="hud-corner hud-br" />
+                  <p className="font-display font-bold text-xl text-gradient leading-none">{n}</p>
+                  <p className="text-muted-foreground text-[10px] uppercase tracking-widest mt-1">{l}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
 
-        {/* ── CATEGORY TABS ── */}
+        {/* ── CATEGORY TABS — same pill style as original ── */}
         <motion.div
-          className="cat-strip"
+          className="mb-8 flex gap-2 flex-wrap"
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.12 }}
+          transition={{ duration: 0.5, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
         >
           {categories.map((cat) => {
             const Icon = cat.icon;
@@ -244,24 +268,31 @@ export default function SkillsSection() {
               <button
                 key={cat.id}
                 onClick={() => setActiveId(cat.id)}
-                className={`cat-btn ${isActive ? "cat-btn--on" : ""}`}
-                style={{ "--cc": cat.color } as React.CSSProperties}
+                className={`relative group/tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 border overflow-hidden whitespace-nowrap ${
+                  isActive
+                    ? "text-primary-foreground border-primary/30"
+                    : "text-muted-foreground border-border bg-card hover:border-primary/20 hover:text-foreground"
+                }`}
               >
+                {/* active gradient bg — matches ProjectCard hover */}
                 {isActive && (
                   <motion.div
-                    layoutId="cat-bg"
-                    className="cat-bg"
-                    style={{ background: `${cat.color}15`, borderColor: `${cat.color}50` }}
-                    transition={{ type: "spring", stiffness: 400, damping: 34 }}
+                    layoutId="skill-tab-bg"
+                    className="absolute inset-0 bg-gradient-to-r from-primary to-accent"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
-                <Icon size={13} className="cat-icon" style={{ color: isActive ? cat.color : undefined }} />
-                <span className="cat-lbl">{cat.label}</span>
-                {isActive && (
-                  <span className="cat-badge" style={{ background: `${cat.color}22`, color: cat.color }}>
-                    {cat.skills.length}
-                  </span>
+                {/* inactive shimmer on hover */}
+                {!isActive && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 opacity-0 group-hover/tab:opacity-100 transition-opacity duration-500" />
                 )}
+                <Icon size={13} className="relative z-10 shrink-0" />
+                <span className="relative z-10">{cat.label}</span>
+                <span className={`relative z-10 text-[10px] px-1.5 py-0.5 rounded-md font-semibold ${
+                  isActive ? "bg-white/20 text-white" : "bg-muted text-muted-foreground"
+                }`}>
+                  {cat.skills.length}
+                </span>
               </button>
             );
           })}
@@ -271,32 +302,44 @@ export default function SkillsSection() {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeId}
-            className="skills-panel"
-            style={{ "--ac": active.color } as React.CSSProperties}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.26 }}
+            transition={{ duration: 0.28 }}
+            className="mb-5"
           >
-            {/* HUD bar */}
-            <div className="hud-bar" style={{ borderBottomColor: `${active.color}35` }}>
-              <div className="hud-l" style={{ color: active.color }}>
-                <active.icon size={13} />
-                <span className="hud-name">{active.label.toUpperCase()}</span>
-                <span className="hud-div">|</span>
-                <span className="hud-info">{active.skills.length} MODULES LOADED</span>
-              </div>
-              <div className="hud-r">
-                <span className="hud-live" style={{ color: active.color, borderColor: `${active.color}45`, background: `${active.color}15` }}>
-                  ● ACTIVE
+            {/* HUD panel header */}
+            <div className="flex items-center justify-between px-5 py-3 rounded-t-2xl border border-b-0 border-border bg-card/60 backdrop-blur-sm">
+              <div className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                <active.icon size={13} className="text-primary" />
+                <span className="text-xs font-semibold tracking-[0.25em] uppercase text-primary">
+                  {active.label}
+                </span>
+                <span className="text-muted-foreground/30 text-xs hidden sm:block">|</span>
+                <span className="text-muted-foreground text-xs hidden sm:block">
+                  {active.skills.length} modules
                 </span>
               </div>
+              <span
+                className="text-[10px] font-semibold tracking-[0.2em] uppercase px-2.5 py-1 rounded-md border"
+                style={{
+                  color: "hsl(var(--primary))",
+                  borderColor: "hsl(var(--primary)/0.3)",
+                  background: "hsl(var(--primary)/0.08)",
+                  animation: "badge-pulse 2.6s ease-in-out infinite",
+                  opacity: blink ? 1 : 0.45,
+                  transition: "opacity 0.15s",
+                }}
+              >
+                ● Active
+              </span>
             </div>
 
-            {/* list */}
-            <div className="skill-list">
+            {/* 2-col skills grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 rounded-b-2xl border border-t-0 border-border bg-card/30 backdrop-blur-sm overflow-hidden">
               {active.skills.map((skill, i) => (
-                <SkillRow key={skill.name} skill={skill} index={i} color={active.color} />
+                <SkillRow key={skill.name} skill={skill} index={i} isOdd={i % 2 === 0} />
               ))}
             </div>
           </motion.div>
@@ -304,21 +347,29 @@ export default function SkillsSection() {
 
         {/* ── LEGEND ── */}
         <motion.div
-          className="legend-row"
+          className="flex flex-wrap gap-1"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.35 }}
+          transition={{ delay: 0.4 }}
         >
           {LEVEL_LABEL.slice(1).map((lbl, i) => (
-            <div key={lbl} className="leg-item">
-              <div className="leg-track">
-                <div className="leg-fill" style={{
-                  width: `${(i + 1) * 20}%`,
-                  background: `linear-gradient(90deg, ${active.color}44, ${active.color})`,
-                }} />
+            <div
+              key={lbl}
+              className="flex-1 min-w-[72px] rounded-xl border border-border bg-card/40 px-3 py-2.5 flex flex-col gap-1.5"
+            >
+              <div className="h-px w-full bg-border rounded-full overflow-visible relative">
+                <div
+                  className="h-full rounded-full absolute top-0 left-0"
+                  style={{
+                    width: `${(i + 1) * 20}%`,
+                    background: "linear-gradient(90deg, hsl(var(--primary)/0.5), hsl(var(--primary)))",
+                  }}
+                />
               </div>
-              <span className="leg-lbl">{lbl}</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-[0.15em] font-medium">
+                {lbl}
+              </span>
             </div>
           ))}
         </motion.div>
@@ -326,237 +377,35 @@ export default function SkillsSection() {
       </div>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap');
-
-        .ss-root {
-          --ap: #a78bfa;
-          --as: #60a5fa;
-          --bg: #05050f;
-          --surf: #0b0b1c;
-          --card: #0e0e20;
-          --bd: rgba(167,139,250,0.1);
-          --bdh: rgba(167,139,250,0.28);
-          --txt: #e2e8f0;
-          --mut: #566070;
-          --fd: 'Orbitron', monospace;
-          --fb: 'Rajdhani', sans-serif;
-
-          position: relative;
-          background: var(--bg);
-          color: var(--txt);
-          font-family: var(--fb);
-          padding: 6rem 1.5rem 5rem;
-          overflow: hidden;
-        }
-
-        .orb { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0; }
-        .orb-1 { width: 600px; height: 600px; top: -150px; left: -120px; background: radial-gradient(circle, rgba(109,40,217,0.2) 0%, transparent 65%); }
-        .orb-2 { width: 450px; height: 450px; bottom: -100px; right: -100px; background: radial-gradient(circle, rgba(29,78,216,0.18) 0%, transparent 65%); }
-        .orb-3 { width: 350px; height: 350px; top: 45%; left: 55%; transform: translate(-50%,-50%); background: radial-gradient(circle, rgba(167,139,250,0.07) 0%, transparent 65%); }
-
-        .dot-grid {
-          position: absolute; inset: 0; z-index: 0;
-          background-image: radial-gradient(rgba(167,139,250,0.2) 1px, transparent 1px);
-          background-size: 30px 30px;
-          mask-image: radial-gradient(ellipse 75% 75% at 50% 40%, black 20%, transparent 100%);
-        }
-
-        .ss-wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
-
-        /* ── Header ── */
-        .ss-header {
-          display: flex; align-items: flex-start; justify-content: space-between;
-          flex-wrap: wrap; gap: 2rem; margin-bottom: 3rem;
-        }
-        .hdr-left { flex: 1; min-width: 260px; }
-
-        .eyebrow {
-          display: inline-flex; align-items: center; gap: 8px;
-          font-family: var(--fd); font-size: 10px;
-          letter-spacing: 0.22em; color: var(--ap);
-          margin-bottom: 14px;
-        }
-        .eyebrow-dot {
-          width: 4px; height: 4px; border-radius: 50%;
-          background: var(--ap); box-shadow: 0 0 7px var(--ap);
-          animation: pdot 2.2s ease-in-out infinite;
-        }
-        @keyframes pdot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.65)} }
-
-        .hdr-title {
-          font-family: var(--fd);
-          font-size: clamp(2rem,5vw,3.2rem);
-          font-weight: 700; color: #f1f5f9;
-          margin: 0 0 10px; line-height: 1.1;
-          letter-spacing: -0.01em;
-        }
-        .amp { color: var(--ap); }
-        .cursor-blink { color: var(--ap); margin-left: 2px; }
-
-        .hdr-sub { font-size: 14px; color: var(--mut); letter-spacing: 0.03em; }
-
-        /* stats */
-        .hdr-stats { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-start; padding-top: 8px; }
-        .stat-chip {
-          background: var(--card); border: 1px solid var(--bd);
-          padding: 16px 22px; text-align: center; min-width: 82px;
-        }
-        .stat-n {
-          font-family: var(--fd); font-size: 22px; font-weight: 700;
-          color: var(--ap); display: block;
-          text-shadow: 0 0 22px rgba(167,139,250,.55);
-        }
-        .stat-l {
-          font-size: 9px; text-transform: uppercase;
-          letter-spacing: 0.16em; color: var(--mut); display: block; margin-top: 4px;
-        }
-
-        /* ── Cat tabs ── */
-        .cat-strip {
-          display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem;
-        }
-        .cat-btn {
-          position: relative; display: inline-flex; align-items: center; gap: 7px;
-          padding: 8px 16px; background: transparent;
-          border: 1px solid rgba(255,255,255,0.07); border-radius: 4px;
-          color: var(--mut); font-family: var(--fb); font-size: 13px; font-weight: 500;
-          cursor: pointer; transition: color .2s, border-color .2s;
-          letter-spacing: 0.04em; overflow: hidden;
-        }
-        .cat-btn:hover { color: var(--txt); border-color: rgba(167,139,250,.25); }
-        .cat-btn--on { color: var(--txt); border-color: transparent; }
-        .cat-bg {
-          position: absolute; inset: 0; border-radius: 4px;
-          border: 1px solid; z-index: 0;
-        }
-        .cat-icon, .cat-lbl, .cat-badge { position: relative; z-index: 1; }
-        .cat-icon { opacity: .65; }
-        .cat-btn--on .cat-icon { opacity: 1; }
-        .cat-badge {
-          font-size: 9px; padding: 1px 6px; border-radius: 10px;
-          font-family: var(--fd); letter-spacing: .06em;
-        }
-
-        /* ── Panel ── */
-        .skills-panel {
-          background: var(--surf);
-          border: 1px solid var(--bd);
-          border-radius: 6px; overflow: hidden;
-          margin-bottom: 1.25rem;
-          box-shadow: 0 0 40px rgba(167,139,250,.04);
-        }
-
-        .hud-bar {
-          display: flex; align-items: center; justify-content: space-between;
-          padding: 10px 20px;
-          border-bottom: 1px solid;
-          background: rgba(0,0,0,.35);
-          backdrop-filter: blur(4px);
-        }
-        .hud-l {
-          display: flex; align-items: center; gap: 10px;
-          font-family: var(--fd); font-size: 10px; letter-spacing: .15em;
-        }
-        .hud-div { opacity: .25; }
-        .hud-info { color: var(--mut); }
-        .hud-live {
-          font-family: var(--fd); font-size: 9px; letter-spacing: .18em;
-          padding: 3px 9px; border-radius: 3px; border: 1px solid;
-          animation: live 2.6s ease-in-out infinite;
-        }
-        @keyframes live { 0%,100%{opacity:1} 50%{opacity:.45} }
-
-        /* ── Skill list ── */
-        .skill-list {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          padding: 6px 0;
-        }
-
         /* ── Skill row ── */
         .skill-row {
-          position: relative; display: flex; align-items: center;
-          justify-content: space-between; gap: 12px;
+          position: relative;
           padding: 13px 20px;
-          border-bottom: 1px solid rgba(255,255,255,.04);
-          overflow: hidden; cursor: default;
+          border-bottom: 1px solid hsl(var(--border));
+          overflow: hidden;
+          cursor: default;
+          transition: background 0.2s;
         }
-        .row-hover-bg {
-          position: absolute; inset: 0; pointer-events: none; z-index: 0;
+        .skill-row:last-child { border-bottom: none; }
+
+        @media (min-width: 768px) {
+          .skill-row--odd { border-right: 1px solid hsl(var(--border)); }
         }
-        .row-side-bar {
-          position: absolute; left: 0; top: 10px; bottom: 10px;
-          width: 2px; border-radius: 2px; z-index: 1;
-          transform-origin: center;
-        }
-        .row-left {
-          display: flex; align-items: center; gap: 10px;
-          min-width: 0; z-index: 1; flex: 1;
-        }
-        .row-idx {
-          font-family: var(--fd); font-size: 9px; color: var(--mut);
-          letter-spacing: .08em; flex-shrink: 0;
-          transition: color .18s;
-        }
-        .row-name {
-          font-size: 14px; font-weight: 500; color: var(--txt);
-          white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        }
-        .row-right {
+
+        .row-inner {
+          position: relative; z-index: 1;
           display: flex; align-items: center; gap: 12px;
-          flex-shrink: 0; z-index: 1;
         }
 
-        /* meter */
-        .meter-track {
-          position: relative; width: 96px; height: 2px;
-          background: rgba(255,255,255,.07); border-radius: 2px;
-          overflow: visible; flex-shrink: 0;
+        /* HUD corner marks */
+        .hud-corner {
+          position: absolute; width: 8px; height: 8px;
+          border-color: hsl(var(--primary)/0.45); border-style: solid;
         }
-        .meter-fill { height: 100%; border-radius: 2px; position: absolute; top: 0; left: 0; }
-        .meter-tip {
-          position: absolute; top: 50%;
-          transform: translate(-50%, -50%);
-          width: 6px; height: 6px; border-radius: 50%;
-        }
-        .row-level {
-          font-family: var(--fd); font-size: 9px; letter-spacing: .12em;
-          color: var(--mut); white-space: nowrap; transition: color .18s;
-          width: 62px; text-align: right;
-        }
-
-        /* ── Legend ── */
-        .legend-row { display: flex; gap: 1px; flex-wrap: wrap; }
-        .leg-item {
-          flex: 1; min-width: 80px;
-          background: var(--card); border: 1px solid var(--bd);
-          padding: 10px 12px;
-          font-family: var(--fd); font-size: 9px;
-          letter-spacing: .12em; color: var(--mut);
-          display: flex; flex-direction: column; gap: 6px;
-        }
-        .leg-track {
-          height: 2px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden;
-        }
-        .leg-fill { height: 100%; border-radius: 2px; }
-
-        /* ── Responsive ── */
-        @media (max-width: 768px) {
-          .ss-root { padding: 4rem 1rem 3rem; }
-          .ss-header { flex-direction: column; gap: 1.5rem; }
-          .hdr-stats { flex-direction: row; }
-          .skill-list { grid-template-columns: 1fr; }
-          .meter-track { width: 64px; }
-          .row-level { display: none; }
-          .cat-btn { padding: 7px 11px; font-size: 12px; }
-        }
-        @media (max-width: 480px) {
-          .hdr-title { font-size: 1.75rem; }
-          .hdr-stats { gap: 8px; }
-          .stat-chip { padding: 12px 16px; }
-          .stat-n { font-size: 18px; }
-          .legend-row { display: none; }
-        }
+        .hud-tl { top: -1px; left: -1px; border-width: 1.5px 0 0 1.5px; }
+        .hud-tr { top: -1px; right: -1px; border-width: 1.5px 1.5px 0 0; }
+        .hud-bl { bottom: -1px; left: -1px; border-width: 0 0 1.5px 1.5px; }
+        .hud-br { bottom: -1px; right: -1px; border-width: 0 1.5px 1.5px 0; }
       `}</style>
     </section>
   );
