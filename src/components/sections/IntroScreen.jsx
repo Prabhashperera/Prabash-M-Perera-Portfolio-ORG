@@ -149,7 +149,7 @@ const IntroScreen = ({ onComplete }) => {
               >
                 <div className="intro-subtext-inner">
                   <span className="intro-subtext-prefix">⊕</span>
-                  <TypeWriter text="devgreg.com" start={phase === 'typing'} />
+                  <TypeWriter text="prabashmperera.me" start={phase === 'typing'} />
                 </div>
               </motion.div>
             </div>
