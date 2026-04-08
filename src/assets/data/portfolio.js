@@ -26,7 +26,7 @@ export const personal = {
 export const stats = [
   { label: "Total Projects", value: "4+", icon: "code", description: "Innovative web solutions crafted" },
   { label: "Certificates", value: "5", icon: "award", description: "Professional skills validated" },
-  { label: "Years of Experience", value: "3+", icon: "globe", description: "Continuous learning journey" },
+  { label: "Years of Experience", value: "2+", icon: "globe", description: "Continuous learning journey" },
 ];
 
 export const skills = ["React", "JavaScript", "Java", "Spring Boot", "Express.js", "SQL"];
@@ -47,6 +47,8 @@ export const techStack = [
   {
     category: "Back-End (Server-Side)",
     techs: [
+      { name: "Spring Boot", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" },
+      { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
       { name: "Node JS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
       { name: "Express", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
       { name: "Firebase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" },
@@ -55,6 +57,7 @@ export const techStack = [
   {
     category: "Database Layer",
     techs: [
+      { name: "SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
       { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
       { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
     ]
@@ -64,6 +67,7 @@ export const techStack = [
     techs: [
       { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
       { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+      { name: "IntelliJ IDEA", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" },
       { name: "Antigravity", icon: "/Images/Antigravity.jpg" },
       { name: "Claude", icon: "/Images/Claude.svg" },
     ]
@@ -73,50 +77,50 @@ export const techStack = [
 export const projects = [
   {
     id: 1,
-    title: "Wonders of Bhashz",
-    description: "A premium tourism platform meticulously designed to showcase the natural beauty and cultural heritage of Aklan through an immersive digital experience.",
-    extendedDescription: "This project serves as a digital gateway to Aklan's most breathtaking destinations. It features high-resolution imagery, historical context, and an intuitive travel guide interface, all wrapped in a premium, fluid UI designed for modern explorers.",
-    tags: ["React", "UI/UX", "Tourism"],
-    image: "/Images/image.png",
-    liveUrl: "https://aklan-tourism.vercel.app/",
-    detailUrl: "#",
-    status: "Deployed",
+    title: "BuildMe - Habit Builder",
+    description: "A full-stack habit-building application designed to help users track daily routines, build consistency, and stay motivated with progress analytics.",
+    extendedDescription: "BuildMe is a modern habit tracking platform that allows users to create, manage, and monitor their daily habits. It includes features like streak tracking, progress visualization, and user authentication. The system is designed with a clean UI and scalable backend, focusing on real-world productivity improvement.",
+    tags: ["React", "Node.js", "MongoDB", "Express"],
+    image: "/Assests/Habit.jpg",
+    liveUrl: "https://build-me-habit-builder-fe.vercel.app/login",
+    detailUrl: "https://github.com/Prabhashperera/BUILD-ME-Habit-Builder-BE",
+    status: "Developing",
     color: "#0066FF",
   },
   {
     id: 2,
-    title: "Banana Leaf Disease Detection",
-    description: "An AI-driven agricultural solution leveraged for identifying diseases in banana leaves through image analysis, helping farmers protect their crops.",
-    extendedDescription: "Developing a robust machine learning model to assist local farmers. The application uses specialized computer vision algorithms to detect early signs of Sigatoka and Panama disease, providing actionable insights directly to the user's mobile device.",
-    tags: ["AI/ML", "Image Analysis", "In Progress"],
-    image: "/Images/Musaic.png",
-    liveUrl: "#",
-    detailUrl: "#",
+    title: "FindCare - Lost Pet Finder",
+    description: "A full-stack web application that helps users report, search, and recover lost pets through a centralized platform.",
+    extendedDescription: "FindCare is designed to solve the real-world problem of lost pets by connecting pet owners and finders. Users can post lost or found pet details, search listings, and potentially integrate location-based services. Built using the MERN stack, the system focuses on usability, real-time updates, and community-driven recovery efforts.",
+    tags: ["React", "Java", "SQL", "Spring Boot"],
+    image: "/public/Assests/Pet.jpg",
+    liveUrl: "https://github.com/Prabhashperera/Find-Care-Full-Stack-App-Spring-Boot",
+    detailUrl: "https://github.com/Prabhashperera/Find-Care-Full-Stack-App-Spring-Boot",
     status: "Developing",
     color: "#10B981",
   },
   {
     id: 3,
-    title: "Weather Map - API",
-    description: "A dynamic weather visualization tool utilizing real-time API data to provide interactive global weather patterns and forecasts.",
-    extendedDescription: "A comprehensive weather dashboard that visualizes global atmospheric data in real-time. It integrates multiple API layers to show temperature heatmaps, wind vectors, and severe weather alerts with a dark-mode optimized GIS interface.",
-    tags: ["API", "Geography", "Real-time"],
+    title: "Automated Green House Management System",
+    description: "An IoT-based smart agriculture system designed to monitor and control greenhouse environmental conditions automatically.",
+    extendedDescription: "This system uses sensors and APIs to monitor temperature, humidity, and soil conditions in real time. It allows automation of irrigation and climate control, improving efficiency and crop yield. The backend is designed with microservices architecture, making it scalable and production-ready.",
+    tags: ["Java", "Spring Boot", "IoT", "Microservices"],
     image: "/Images/WeatherMap.png",
-    liveUrl: "#",
-    detailUrl: "#",
+    liveUrl: "https://github.com/Prabhashperera/Automated-Greenhouse-Management-System",
+    detailUrl: "https://github.com/Prabhashperera/Automated-Greenhouse-Management-System",
     status: "Developing",
     color: "#0EA5E9",
   },
   {
     id: 4,
-    title: "Portfolio Version 1",
-    description: "The initial foundation of my web presence, showcasing early explorations in structural web engineering and minimalist design principles.",
-    extendedDescription: "My first foray into professional web development. This project focused on mastering the fundamentals of semantic HTML, responsive CSS architecture, and the beginning of my obsession with smooth, meaningful animations.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    image: "/Images/image copy.png",
+    title: "Project - ZEIDOT",
+    description: "A desktop-based food donation management system that connects hotels with charities to reduce food waste.",
+    extendedDescription: "ZEIDOT is a JavaFX-based standalone application developed using OOP, MVC, and layered architecture. It helps hotels manage leftover food by tracking quantities, categorizing items, and coordinating donations to elderly and children's homes. The system includes database integration and focuses on solving a real social problem.",
+    tags: ["Java", "JavaFX", "MySQL", "OOP"],
+    image: "/public/Assests/ZEIDOT.jpg",
     liveUrl: "#",
     detailUrl: "#",
-    status: "Deployed",
+    status: "Completed",
     color: "#6366F1",
   },
 ];
