@@ -7,7 +7,7 @@ import { useFluidParallax, fadeUp, staggerContainer, slideInLeft, slideInRight, 
 import '../../styles/Hero.css';
 
 // ── Typewriter ───────────────────────────────────────────────
-const WORDS = ['Software Engineer', 'UI/UX Craftsman', 'Creative Developer', 'Full-Stack Builder'];
+const WORDS = ['Software Engineer', 'Back-End Developer', 'Creative Developer', 'Full-Stack Engineer'];
 
 const TypeWriter = () => {
   const [wordIndex, setWordIndex] = useState(0);
@@ -134,9 +134,9 @@ const CodePanel = () => {
         {/* Code block content */}
         <div className="hero-code-panel-content">
           <div><span style={{ color: '#60a5fa' }}>const</span> <span style={{ color: '#67e8f9' }}>Developer</span> <span style={{ color: 'rgba(255,255,255,0.5)' }}>= {'{'}</span></div>
-          <div className="hero-code-panel-line-indent"><span style={{ color: '#93c5fd' }}>name</span><span style={{ color: 'rgba(255,255,255,0.5)' }}>:</span> <span style={{ color: '#6ee7b7', borderBottom: '1px solid rgba(110,231,183,0.3)' }}>"Gregor Allen"</span><span style={{ color: 'rgba(255,255,255,0.5)' }}>,</span></div>
+          <div className="hero-code-panel-line-indent"><span style={{ color: '#93c5fd' }}>name</span><span style={{ color: 'rgba(255,255,255,0.5)' }}>:</span> <span style={{ color: '#6ee7b7', borderBottom: '1px solid rgba(110,231,183,0.3)' }}>"Prabash Perera"</span><span style={{ color: 'rgba(255,255,255,0.5)' }}>,</span></div>
           <div className="hero-code-panel-line-indent"><span style={{ color: '#93c5fd' }}>role</span><span style={{ color: 'rgba(255,255,255,0.5)' }}>:</span> <span style={{ color: '#6ee7b7' }}>"Software Engineer"</span><span style={{ color: 'rgba(255,255,255,0.5)' }}>,</span></div>
-          <div className="hero-code-panel-line-indent"><span style={{ color: '#93c5fd' }}>passion</span><span style={{ color: 'rgba(255,255,255,0.5)' }}>:</span> <span style={{ color: '#6ee7b7' }}>"Premium Web Experiences"</span><span style={{ color: 'rgba(255,255,255,0.5)' }}>,</span></div>
+          <div className="hero-code-panel-line-indent"><span style={{ color: '#93c5fd' }}>passion</span><span style={{ color: 'rgba(255,255,255,0.5)' }}>:</span> <span style={{ color: '#6ee7b7' }}>"Architect Better Systems"</span><span style={{ color: 'rgba(255,255,255,0.5)' }}>,</span></div>
 
           <div className="hero-code-panel-line-indent" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', paddingTop: '0.5rem', paddingBottom: '0.5rem' }}>
             <span style={{ color: '#93c5fd', marginTop: '0.25rem' }}>skills</span><span style={{ color: 'rgba(255,255,255,0.5)', marginTop: '0.25rem' }}>: [</span>
@@ -294,7 +294,7 @@ const Hero = () => {
               variants={slowFadeUp}
               className="hero-bio"
             >
-              I am <strong className="text-white-bold">Gregor Allen B. Mondragon</strong>, a Software Engineer dedicated to architecting high-performance web solutions and premium digital experiences. I specialize in bridging complex technical requirements with elite UI/UX design, offering scalable full-stack development that exceeds expectations and delivers high-impact results.
+              I am <strong className="text-white-bold">Prabash Perera</strong>, a Software Engineer dedicated to architecting high-performance web solutions and premium digital experiences. I specialize in bridging complex technical requirements with elite Systems & UI/UX designs, offering scalable full-stack development that exceeds expectations and delivers high-impact results.
             </motion.p>
 
             {/* Call to Actions */}

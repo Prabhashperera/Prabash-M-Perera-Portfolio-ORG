@@ -1,25 +1,25 @@
 // ============================================================
-// Portfolio Data — Gregor Allen B. Mondragon
+// Portfolio Data — Prabash
 // ============================================================
 
 export const personal = {
-  name: "Gregor Allen B. Mondragon",
-  alias: "DevGreg",
+  name: "Prabash M Perera",
+  alias: "Bhashz",
   tagline: "Software Engineer",
-  subtitle: "BSIT – Software Engineering",
+  subtitle: "Software Engineering",
   // GEMINI API KEY for ChatBot (Temporary frontend exposure for local development)
   geminiKey: "AIzaSyAayAxFEIZ-izyd5FKUiaLWxmYEGwvRk_Y",
-  bio: "I am Gregor Allen B. Mondragon, a Software Engineer dedicated to architecting high-performance web solutions and premium digital experiences. I specialize in bridging complex technical requirements with elite UI/UX design, offering scalable full-stack development that exceeds expectations and delivers high-impact results.",
-  bio2: "As the sole developer and architect behind this platform, I have meticulously engineered every interaction—from the fluid animations and high-end UI design to the underlying software architecture. This project represents the intersection of my technical expertise and my deep-rooted passion for showcasing Aklan's unmatched beauty to the world through a premium, immersive digital experience.",
-  email: "gregormondragon16@gmail.com",
-  website: "devgreg.dev",
-  location: "Aklan, Philippines",
+  bio: "I am Prabash Malshika Perera, a Software Engineer dedicated to architecting high-performance, Scalable solutions and premium digital experiences. I specialize in bridging complex technical requirements, offering scalable full-stack development that exceeds expectations and delivers high-impact results.",
+  bio2: "As the sole developer and architect behind this platform, I have meticulously engineered every interaction—from the fluid animations and high-end UI design to the underlying software architecture. This project represents the intersection of my technical expertise and my deep-rooted passion for showcasing my unmatched beauty to the world through a premium, immersive digital experience.",
+  email: "prabashmperera01@gmail.com",
+  website: "prabashmperera.me",
+  location: "Prabash, Sri Lanka",
   links: {
-    github: "https://github.com/GregorMondragon",
-    linkedin: "https://linkedin.com/in/DevGreg",
-    facebook: "https://www.facebook.com/gregorallenbarrientosmondragon/",
-    instagram: "https://www.instagram.com/grgrllnmndrgn/",
-    telegram: "https://t.me/grgrllnmndrgn",
+    github: "https://github.com/Prabhashperera",
+    linkedin: "www.linkedin.com/in/prabash-m-perera-org",
+    facebook: "",
+    instagram: "",
+    telegram: "",
   },
 };
 
@@ -29,7 +29,7 @@ export const stats = [
   { label: "Years of Experience", value: "3+", icon: "globe", description: "Continuous learning journey" },
 ];
 
-export const skills = ["React", "JavaScript", "Framer", "Node.js", "MongoDB", "and many more"];
+export const skills = ["React", "JavaScript", "Java", "Spring Boot", "Express.js", "SQL"];
 
 export const techStack = [
   {
@@ -73,7 +73,7 @@ export const techStack = [
 export const projects = [
   {
     id: 1,
-    title: "Wonders of Aklan",
+    title: "Wonders of Bhashz",
     description: "A premium tourism platform meticulously designed to showcase the natural beauty and cultural heritage of Aklan through an immersive digital experience.",
     extendedDescription: "This project serves as a digital gateway to Aklan's most breathtaking destinations. It features high-resolution imagery, historical context, and an intuitive travel guide interface, all wrapped in a premium, fluid UI designed for modern explorers.",
     tags: ["React", "UI/UX", "Tourism"],
