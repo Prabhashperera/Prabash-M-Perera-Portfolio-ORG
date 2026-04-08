@@ -209,7 +209,7 @@ const Contact = () => {
                   <label className="contact-input-label">Your Name</label>
                   <input
                     className="contact-input"
-                    type="text" name="name" placeholder="John Doe"
+                    type="text" name="name" placeholder="Prabash  M"
                     value={form.name} onChange={handleChange} required
                   />
                 </motion.div>

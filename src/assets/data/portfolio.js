@@ -126,22 +126,22 @@ export const projects = [
 ];
 
 export const certificates = [
-  { title: "Web Development & Mobile App Design", issuer: "ActiveLearning, Inc. (Philippines)", year: "2026" },
+  { title: "Certified React Js Developer", issuer: "DP IT CAMPUS", year: "2026" },
   { title: "Google UX Design Professional Certificate", issuer: "Google", year: "2026" },
-  { title: "Android Development", issuer: "Coursera", year: "2026" },
-  { title: "Front-End Developer Professional Certificate", issuer: "Coursera", year: "2026" },
+  { title: "Certified Javascript Developer", issuer: "Scrmiba", year: "2026" },
+  { title: "Introduction to Docker Containerization", issuer: "Kodeku", year: "2026" },
   { title: "Back-End Developer Professional Certificate", issuer: "Coursera", year: "2026" },
 ];
 
 export const academic = {
-  degree: "Bachelor of Science in Information Technology",
+  degree: "BSc (Hons) in Computer Science",
   major: "Major in Software Engineering",
-  institution: "Aklan State University – College of Computer Studies",
-  period: "2023 — Present",
+  institution: "Institute of Software Engineering - IJSE",
+  period: "2024 — Present",
   timeline: [
     {
       id: "01",
-      year: "First Year",
+      year: "First SEM",
       title: "The Foundations",
       focus: "Logic & Structural Web",
       concepts: ["OOP", "Data Structures", "Algorithms"],
@@ -151,17 +151,17 @@ export const academic = {
     },
     {
       id: "02",
-      year: "Second Year",
+      year: "Second SEM",
       title: "The Systems",
       focus: "Data Architecture & Networking",
       concepts: ["SQL", "Systems Integration", "Network Protocols"],
       stack: ["Advanced Java", "MySQL", "Cisco"],
-      project: "Wonder of Aklan — A curated tourism platform showcasing local destinations with a clean, aesthetic UI.",
+      project: "A curated tourism platform showcasing local destinations with a clean, aesthetic UI.",
       icon: "database"
     },
     {
       id: "03",
-      year: "Third Year",
+      year: "Third SEM",
       title: "The Modern Stack",
       focus: "Full-Stack & Quality Assurance",
       concepts: ["SQA", "API Design", "Component Architecture"],
