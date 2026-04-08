@@ -93,7 +93,7 @@ export const projects = [
     description: "A full-stack web application that helps users report, search, and recover lost pets through a centralized platform.",
     extendedDescription: "FindCare is designed to solve the real-world problem of lost pets by connecting pet owners and finders. Users can post lost or found pet details, search listings, and potentially integrate location-based services. Built using the MERN stack, the system focuses on usability, real-time updates, and community-driven recovery efforts.",
     tags: ["React", "Java", "SQL", "Spring Boot"],
-    image: "/public/Assests/Pet.jpg",
+    image: "/Assests/Pet.jpg",
     liveUrl: "https://github.com/Prabhashperera/Find-Care-Full-Stack-App-Spring-Boot",
     detailUrl: "https://github.com/Prabhashperera/Find-Care-Full-Stack-App-Spring-Boot",
     status: "Developing",
