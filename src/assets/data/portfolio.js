@@ -117,7 +117,7 @@ export const projects = [
     description: "A desktop-based food donation management system that connects hotels with charities to reduce food waste.",
     extendedDescription: "ZEIDOT is a JavaFX-based standalone application developed using OOP, MVC, and layered architecture. It helps hotels manage leftover food by tracking quantities, categorizing items, and coordinating donations to elderly and children's homes. The system includes database integration and focuses on solving a real social problem.",
     tags: ["Java", "JavaFX", "MySQL", "OOP"],
-    image: "/public/Assests/ZEIDOT.jpg",
+    image: "/Assests/ZEIDOT.jpg",
     liveUrl: "#",
     detailUrl: "#",
     status: "Completed",
